@@ -20,6 +20,7 @@ def test_transform_valid():
     assert not result.empty
     assert result.iloc[0]["Price"] == 160000.0
     assert result.iloc[0]["Rating"] == 4.5
+    assert result.iloc[0]["Colors"] == 3
     assert result.iloc[0]["Size"] == "M"
     assert result.iloc[0]["Gender"] == "Men"
 
