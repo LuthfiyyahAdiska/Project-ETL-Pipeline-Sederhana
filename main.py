@@ -1,19 +1,31 @@
-from utils.extract import scrape_all
+from utils.extract import scrape_fashion_studio
 from utils.transform import transform_data
-import urllib3
-urllib3.disable_warnings()  
+from utils.load import save_to_csv
 
-print("START")
+def main():
+    print("START")
 
-# EXTRACT
-data = scrape_all()
-print("EXTRACT:", len(data))
+    # EXTRACT
+    raw_data = scrape_fashion_studio()
+    print("EXTRACT:", len(raw_data))
 
-# TRANSFORM
-df = transform_data(data)
-print("TRANSFORM:", len(df))
+    if raw_data.empty:
+        print("❌ Waduh, data tidak ditemukan! Cek URL website-nya ya.")
+        return 
 
-print("DONE")
+    # TRANSFORM
+    df = transform_data(raw_data) 
+    if df is not None:
+        print("TRANSFORM:", len(df))
+    else:
+        print("❌ Data setelah dibersihkan jadi kosong.")
 
-# ❗ INI BARU BENAR
-print(df.isnull().sum())
+    # LOAD (INI KUNCI)
+    save_to_csv(df)
+
+    print(df.head())
+    print(df.columns)
+    print("DONE")
+
+if __name__ == "__main__":
+    main()
