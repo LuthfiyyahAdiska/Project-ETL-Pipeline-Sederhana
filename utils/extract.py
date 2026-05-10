@@ -44,16 +44,13 @@ def scrape_fashion_studio():
                 continue
 
             for p in products:
-                # Ambil judul produk dari h3.product-title
+                
                 title_tag = p.find('h3', class_='product-title')
                 title = title_tag.text.strip() if title_tag else "Unknown Product"
                 
-                # Ambil harga dari span.price
                 price_tag = p.find('span', class_='price')
                 price = price_tag.text.strip() if price_tag else None
                 
-                # Rating, Colors, Size, Gender ada di tag <p> biasa
-                # Identifikasi berdasarkan teks konten
                 all_p_tags = p.find_all('p')
                 rating = None
                 colors = None
@@ -82,7 +79,6 @@ def scrape_fashion_studio():
             
             logging.info(f"Halaman {page}: {len(products)} produk berhasil diambil.")
             
-            # Delay antar request untuk menghindari rate limit
             time.sleep(0.5)
             
         except Exception as e:
