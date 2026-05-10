@@ -1,0 +1,13 @@
+INTRUKSI JALANKAN ETL:
+1. Install requirements: pip install -r requirements.txt
+2. Jalankan main program: python main.py
+3. Hasil akan muncul di products.csv, Google Sheets, dan Supabase.
+
+INSTRUKSI TESTING:
+1. Jalankan semua test: python -m unittest discover tests/
+2. Cek coverage: pytest --cov=. tests/
+
+LINK REPOSITORY & RESOURCE:
+- GitHub: https://github.com/LuthfiyyahAdiska/Project-ETL-Pipeline-Sederhana
+- Google Sheets: https://drive.google.com/file/d/1gbgo6uadY_Z5p3Yi2OVbWxJasZqCeplP/view?usp=sharing
+- Supabase: https://supabase.com/dashboard/project/klogkmvbkexijcjchflx/editor/17547
